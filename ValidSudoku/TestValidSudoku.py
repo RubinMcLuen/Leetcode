@@ -29,5 +29,10 @@ class TestValidSudoku(unittest.TestCase):
             solution = ValidSudoku(board)
             self.assertEqual(solution.valid_sudoku_brute_force(), expected)
 
+    def test_one_pass(self):
+        for board, expected in self.test_cases:
+            solution = ValidSudoku(board)
+            self.assertEqual(solution.valid_sudoku_one_pass(), expected)
+
 if __name__ == "__main__":
     unittest.main()

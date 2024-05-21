@@ -1,3 +1,6 @@
+import collections
+
+
 class ValidSudoku:
     def __init__(self, board):
         self.board = board
@@ -42,4 +45,24 @@ class ValidSudoku:
                     if counts[int(val) - 1] > 1:
                         return False
         return True
+    
+
+    def valid_sudoku_one_pass(self):
+        rows = collections.defaultdict(set)
+        cols = collections.defaultdict(set)
+        squares = collections.defaultdict(set)
+
+        for r in range(9):
+            for c in range(9):
+                if self.board[r][c] == ".":
+                    continue
+                if (self.board[r][c] in rows[r] or
+                    self.board[r][c] in cols[c] or
+                    self.board[r][c] in squares[(r // 3, c // 3)]):
+                    return False
+                rows[r].add(self.board[r][c])
+                cols[c].add(self.board[r][c])
+                squares[(r // 3, c // 3)].add(self.board[r][c])
+        return True
+
 

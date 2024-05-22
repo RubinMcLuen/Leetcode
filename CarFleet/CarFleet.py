@@ -4,7 +4,7 @@ class CarFleet:
         self.spd = spd
         self.target = target
 
-    def car_fleet_stac(self):
+    def car_fleet_stack(self):
         pair = [(p, s) for p, s in zip(self.pos, self.spd)]
         pair.sort(reverse=True)
         stack = []
